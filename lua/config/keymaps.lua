@@ -17,6 +17,15 @@ vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equalize splits" })
 vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>wh", "<cmd>split<cr>", { desc = "Split window horizontally" })
 
+-- Resize the current split's width. Bound to the physical +/- key (no shift
+-- needed, same key), which most terminals report as <C-=>/<C-->/ regardless
+-- of whether shift is held -- if yours reports <C-+> as a distinct key
+-- (e.g. Kitty/Ghostty/WezTerm with the Kitty keyboard protocol on), that's
+-- mapped too so it works either way.
+vim.keymap.set("n", "<C-=>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-+>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-->", "<cmd>vertical resize -5<cr>", { desc = "Decrease window width" })
+
 -- NOTE: <leader>h is also the prefix for the Git hunks group (hs/hr/hu/hS/
 -- hR/hp/hb) -- same timeoutlen trade-off as <leader>n above. <leader>v had
 -- no existing prefix, so it's a clean addition.
@@ -28,6 +37,15 @@ vim.keymap.set("n", "<leader>v", function()
   vim.cmd "vsplit | terminal"
   vim.cmd "startinsert"
 end, { desc = "Vertical terminal" })
+
+-- Terminal-mode only: <C-[> drops a :terminal buffer out of terminal-insert
+-- into terminal-normal mode (the normal <C-\><C-n>), so C-h/j/k/l (mapped
+-- above via vim-tmux-navigator) can then move you out to another split/pane
+-- right away, no mouse needed. Scoped to mode "t" only -- doesn't touch <Esc>
+-- or <C-[> anywhere else, so nothing outside a terminal buffer changes.
+-- Note: a terminal emulator sends the identical byte for <C-[> and <Esc>, so
+-- this is functionally "press Esc once while in terminal-insert mode".
+vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", { desc = "Exit terminal insert mode" })
 local function toggle_line_numbers()
   local enabled = not settings.get "line_numbers"
   settings.set("line_numbers", enabled)
@@ -36,12 +54,6 @@ local function toggle_line_numbers()
 end
 
 vim.keymap.set("n", "<leader>tn", toggle_line_numbers, { desc = "Toggle line numbers" })
--- NOTE: <leader>n is also the prefix for the Notion group (nn/nc/nd/nb/ns).
--- Both a leaf action and a group can share a prefix -- Neovim waits up to
--- 'timeoutlen' (400ms here) after <leader>n to see if a Notion sub-key
--- follows before firing this toggle. That means every Notion keymap now has
--- a ~400ms delay it didn't have before. Flagging this since it's a real
--- trade-off, not a bug -- let me know if you'd rather this live elsewhere.
 vim.keymap.set("n", "<leader>n", toggle_line_numbers, { desc = "Toggle line numbers" })
 vim.keymap.set("n", "'", "<cmd>Telescope projects<cr>", { desc = "Project switcher" })
 vim.keymap.set("n", "<leader>e", function()

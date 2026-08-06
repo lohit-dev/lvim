@@ -56,10 +56,14 @@ vim.pack.add {
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/kawre/leetcode.nvim" },
   { src = "https://github.com/olexsmir/gopher.nvim" },
+  -- Auto-closes/renames matching JSX/TSX/HTML tags as you type/edit one side.
+  { src = "https://github.com/windwp/nvim-ts-autotag" },
+  -- Rewrites tsgo/tsserver's dense TS error messages into plain English
+  -- (still shown as a normal diagnostic, just more readable).
+  { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
   -- rustaceanvim manages the rust-analyzer client itself (ftplugin/rust.lua);
   -- it must NOT also be started through vim.lsp.enable, see config.rustaceanvim.
   { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range "^9" },
-  { src = "https://github.com/ALT-F4-LLC/notion.nvim" },
   { src = "https://github.com/zbirenbaum/copilot.lua" },
   { src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -88,12 +92,14 @@ require "config.overseer"
 require "config.devtools"
 require "config.leetcode"
 require "config.gopher"
-require "config.notion"
+require "config.ts_autotag"
+require "config.ts_error_translator"
 require "config.copilot"
 require "config.copilot_chat"
 require "config.snippets"
 require "config.completion"
 require "config.oil"
+require "config.template_string"
 
 -- ---------------------------------------------------------------------------
 -- LSP servers

@@ -65,5 +65,5 @@ map("n", "<leader>fz", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find i
 map("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Projects" })
 map("n", "<leader>ft", theme_picker, { desc = "Pick colorscheme" })
 
-map("n", "<leader>cm", git_safe "git_commits", { desc = "Git commits" })
+map("n", "<leader>gc", git_safe "git_commits", { desc = "Git commits" })
 map("n", "<leader>gt", git_safe "git_status", { desc = "Git status" })
