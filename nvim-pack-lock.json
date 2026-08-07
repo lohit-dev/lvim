@@ -136,6 +136,10 @@
       "rev": "56b4052f71220144689caaa2e5b66222ba5661eb",
       "src": "https://github.com/garymjr/nvim-snippets"
     },
+    "nvim-tree.lua": {
+      "rev": "b2aadda94b107480c48e548d6db51c6840b7b33c",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua"
+    },
     "nvim-treesitter": {
       "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"

@@ -52,7 +52,6 @@ vim.pack.add {
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/folke/trouble.nvim" },
   { src = "https://github.com/numToStr/Comment.nvim" },
-  { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/kawre/leetcode.nvim" },
   { src = "https://github.com/olexsmir/gopher.nvim" },
@@ -67,10 +66,7 @@ vim.pack.add {
   { src = "https://github.com/zbirenbaum/copilot.lua" },
   { src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-  { src = "https://github.com/stevearc/oil.nvim" },
-  { src = "https://github.com/refractalize/oil-git-status.nvim" },
-  { src = "https://github.com/benomahony/oil-git.nvim" },
-  { src = "https://github.com/JezerM/oil-lsp-diagnostics.nvim" },
+  { src = "https://github.com/nvim-tree/nvim-tree.lua" },
 }
 
 -- vim.g.rustaceanvim must be set before any rust buffer opens (rustaceanvim
@@ -98,7 +94,7 @@ require "config.copilot"
 require "config.copilot_chat"
 require "config.snippets"
 require "config.completion"
-require "config.oil"
+require "config.nvimtree"
 require "config.template_string"
 
 -- ---------------------------------------------------------------------------
@@ -115,5 +111,5 @@ vim.lsp.enable {
   "jsonls",
   "taplo",
   "gopls",
-  "tsc",
+  "tsgo",
 }

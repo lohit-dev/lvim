@@ -26,26 +26,6 @@ vim.keymap.set("n", "<C-=>", "<cmd>vertical resize +5<cr>", { desc = "Increase w
 vim.keymap.set("n", "<C-+>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
 vim.keymap.set("n", "<C-->", "<cmd>vertical resize -5<cr>", { desc = "Decrease window width" })
 
--- NOTE: <leader>h is also the prefix for the Git hunks group (hs/hr/hu/hS/
--- hR/hp/hb) -- same timeoutlen trade-off as <leader>n above. <leader>v had
--- no existing prefix, so it's a clean addition.
-vim.keymap.set("n", "<leader>h", function()
-  vim.cmd "split | terminal"
-  vim.cmd "startinsert"
-end, { desc = "Horizontal terminal" })
-vim.keymap.set("n", "<leader>v", function()
-  vim.cmd "vsplit | terminal"
-  vim.cmd "startinsert"
-end, { desc = "Vertical terminal" })
-
--- Terminal-mode only: <C-[> drops a :terminal buffer out of terminal-insert
--- into terminal-normal mode (the normal <C-\><C-n>), so C-h/j/k/l (mapped
--- above via vim-tmux-navigator) can then move you out to another split/pane
--- right away, no mouse needed. Scoped to mode "t" only -- doesn't touch <Esc>
--- or <C-[> anywhere else, so nothing outside a terminal buffer changes.
--- Note: a terminal emulator sends the identical byte for <C-[> and <Esc>, so
--- this is functionally "press Esc once while in terminal-insert mode".
-vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", { desc = "Exit terminal insert mode" })
 local function toggle_line_numbers()
   local enabled = not settings.get "line_numbers"
   settings.set("line_numbers", enabled)
@@ -56,39 +36,6 @@ end
 vim.keymap.set("n", "<leader>tn", toggle_line_numbers, { desc = "Toggle line numbers" })
 vim.keymap.set("n", "<leader>n", toggle_line_numbers, { desc = "Toggle line numbers" })
 vim.keymap.set("n", "'", "<cmd>Telescope projects<cr>", { desc = "Project switcher" })
-vim.keymap.set("n", "<leader>e", function()
-  require("oil").open()
-end, { desc = "Open file tree" })
-
-local function open_netrw_file(vertical)
-  local file = vim.fn.expand "<cfile>"
-  if file == "" then
-    return
-  end
-  vim.cmd((vertical and "vsplit " or "split ") .. vim.fn.fnameescape(file))
-end
-
-local function configure_file_tree(args)
-  local is_netrw = vim.bo[args.buf].filetype == "netrw"
-  local is_directory = vim.fn.isdirectory(vim.api.nvim_buf_get_name(args.buf)) == 1
-  if not is_netrw and not is_directory then
-    return
-  end
-
-  vim.keymap.set("n", "<C-v>", function()
-    open_netrw_file(true)
-  end, { buffer = args.buf, desc = "Open file in vertical split" })
-  vim.keymap.set("n", "<C-h>", function()
-    open_netrw_file(false)
-  end, { buffer = args.buf, desc = "Open file in horizontal split" })
-end
-
-vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
-  pattern = "*",
-  callback = function(args)
-    configure_file_tree(args)
-  end,
-})
 
 -- Buffers -----------------------------------------------------------------
 local function close_buffers(direction)
