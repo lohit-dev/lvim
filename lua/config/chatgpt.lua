@@ -7,4 +7,9 @@ require("chatgpt").setup {
 
 vim.keymap.set("n", "<leader>aa", "<cmd>ChatGPT<cr>", { desc = "Toggle ChatGPT" })
 vim.keymap.set("n", "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "Edit with ChatGPT instructions" })
-vim.keymap.set("x", "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "Edit selection with ChatGPT instructions" })
+vim.keymap.set(
+  "x",
+  "<leader>ae",
+  "<cmd>ChatGPTEditWithInstructions<cr>",
+  { desc = "Edit selection with ChatGPT instructions" }
+)
