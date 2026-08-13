@@ -5,7 +5,11 @@ local state_file = state_dir .. "/lvim-settings.json"
 local values = {
   inlay_hints = true,
   line_numbers = true,
-  copilot_auto_trigger = true,
+  -- Off until you explicitly toggle it on with <leader>at (see
+  -- config.copilot). A fresh clone has no state file yet, so this default
+  -- is what actually applies right after `git clone` -- keeping it false
+  -- means Copilot never starts throwing ghost text at you unasked.
+  copilot_auto_trigger = false,
 }
 
 if vim.fn.filereadable(state_file) == 1 then

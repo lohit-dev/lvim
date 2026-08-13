@@ -71,7 +71,7 @@ vim.pack.add {
   -- it must NOT also be started through vim.lsp.enable, see config.rustaceanvim.
   { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range "^9" },
   { src = "https://github.com/zbirenbaum/copilot.lua" },
-  { src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
+  { src = "https://github.com/jackMort/ChatGPT.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-tree/nvim-tree.lua" },
 }
@@ -98,7 +98,7 @@ require "config.gopher"
 require "config.ts_autotag"
 require "config.ts_error_translator"
 require "config.copilot"
-require "config.copilot_chat"
+require "config.chatgpt"
 require "config.snippets"
 require "config.completion"
 require "config.nvimtree"

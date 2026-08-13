@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "ChatGPT.nvim": {
+      "rev": "5c54a7e9de67e2f8f8c3ed60f872f4a34a3e65ff",
+      "src": "https://github.com/jackMort/ChatGPT.nvim"
+    },
     "Comment.nvim": {
       "rev": "e30b7f2008e52442154b66f7c519bfd2f1e32acb",
       "src": "https://github.com/numToStr/Comment.nvim"
