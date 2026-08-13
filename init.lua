@@ -27,6 +27,7 @@ vim.pack.add {
   { src = "https://github.com/taigrr/cyberpunk.nvim" },
   { src = "https://github.com/gbprod/nord.nvim" },
   { src = "https://github.com/j-hui/fidget.nvim" },
+  { src = "https://github.com/stevearc/dressing.nvim" },
   { src = "https://github.com/windwp/nvim-autopairs" },
   { src = "https://github.com/ahmedkhalf/project.nvim" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
@@ -71,7 +72,7 @@ vim.pack.add {
   -- it must NOT also be started through vim.lsp.enable, see config.rustaceanvim.
   { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range "^9" },
   { src = "https://github.com/zbirenbaum/copilot.lua" },
-  { src = "https://github.com/jackMort/ChatGPT.nvim" },
+  { src = "https://github.com/olimorris/codecompanion.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-tree/nvim-tree.lua" },
 }
@@ -83,6 +84,7 @@ require "config.rustaceanvim"
 require "config.colorscheme"
 require "config.colorizer"
 require "config.fidget"
+require "config.dressing"
 require "config.treesitter"
 require "config.markdown"
 require "config.project"
@@ -98,7 +100,7 @@ require "config.gopher"
 require "config.ts_autotag"
 require "config.ts_error_translator"
 require "config.copilot"
-require "config.chatgpt"
+require "config.codecompanion"
 require "config.snippets"
 require "config.completion"
 require "config.nvimtree"

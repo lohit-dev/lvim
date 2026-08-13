@@ -1,6 +1,11 @@
 local cmp = require "cmp"
 
+vim.o.pumheight = 10
+
 cmp.setup {
+  performance = {
+    max_view_entries = 10,
+  },
   completion = {
     autocomplete = { cmp.TriggerEvent.TextChanged },
   },
