@@ -41,7 +41,7 @@ opt.completeopt = {
   "noinsert",
 }
 
-opt.shortmess:append("W")
+opt.shortmess:append "W"
 opt.ruler = false
 opt.cmdheight = 0
 

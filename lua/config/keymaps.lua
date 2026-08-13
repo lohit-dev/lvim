@@ -106,14 +106,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
         :find()
     end, "List workspace folders")
 
-    if client:supports_method "textDocument/inlayHint" then
+    if client:supports_method "textDocument/inlayHint" and client.name ~= "jdtls" then
       vim.lsp.inlay_hint.enable(settings.get "inlay_hints", { bufnr = buf })
       map("n", "<leader>th", function()
         local enabled = not settings.get "inlay_hints"
         settings.set("inlay_hints", enabled)
         for _, target_buf in ipairs(vim.api.nvim_list_bufs()) do
           if vim.api.nvim_buf_is_valid(target_buf) and #vim.lsp.get_clients { bufnr = target_buf } > 0 then
-            vim.lsp.inlay_hint.enable(enabled, { bufnr = target_buf })
+            -- Avoid enabling inlay hints for jdtls across all buffers too
+            local has_jdtls = false
+            for _, c in pairs(vim.lsp.get_clients { bufnr = target_buf }) do
+              if c.name == "jdtls" then
+                has_jdtls = true
+              end
+            end
+            if not has_jdtls then
+              vim.lsp.inlay_hint.enable(enabled, { bufnr = target_buf })
+            end
           end
         end
       end, "Toggle inlay hints")

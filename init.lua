@@ -55,6 +55,13 @@ vim.pack.add {
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/kawre/leetcode.nvim" },
   { src = "https://github.com/olexsmir/gopher.nvim" },
+  {
+    src = "https://github.com/JavaHello/spring-boot.nvim",
+    version = "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
+  },
+  "https://github.com/MunifTanjim/nui.nvim",
+  "https://github.com/mfussenegger/nvim-dap",
+  "https://github.com/nvim-java/nvim-java",
   -- Auto-closes/renames matching JSX/TSX/HTML tags as you type/edit one side.
   { src = "https://github.com/windwp/nvim-ts-autotag" },
   -- Rewrites tsgo/tsserver's dense TS error messages into plain English
@@ -96,6 +103,7 @@ require "config.snippets"
 require "config.completion"
 require "config.nvimtree"
 require "config.template_string"
+require "config.java"
 
 -- ---------------------------------------------------------------------------
 -- LSP servers
@@ -112,4 +120,5 @@ vim.lsp.enable {
   "taplo",
   "gopls",
   "tsgo",
+  "jdtls",
 }
